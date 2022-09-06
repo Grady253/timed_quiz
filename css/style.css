@@ -1,0 +1,13 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+}
+
+header , .introduction, .timer{
+    text-align: center;
+}
+
+.quesiton{
+    text-align: center;
+}
+
