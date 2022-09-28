@@ -5,6 +5,8 @@ let questionContainer = document.querySelector("#question");
 
 let startBtn = document.querySelector("#start");
 
+let introEl = document.querySelector("#introduction");
+
 let quizClock = 60;
 
 function quizTimer() {
@@ -43,26 +45,26 @@ questionContainer.addEventListener("click", function (event) {
 const quizQuestions = [
   {
     Question: "What is the symbol to comment in javascript?",
-    Choice: ["A: //", "B: /> ", "C: ()", "D: ||"],
-    Answer: "Answer A"
+    Choices: ["A: //", "B: /> ", "C: ()", "D: ||"],
+    Answer: ["A: //"]
   },
 
   {
     Question: "What is the script tag for Javascript when writing on HTML?",
     Choice: ["A: <javascript>", "B: <script>", "C: <js>", "D: <java>"],
-    Answer: "Answer B"
+    Answer: "B: <script>"
   },
 
   {
     Question: "What are Javascript data types?",
     Choice: ["A: String", "B: Object", "C: Numbers", "D: All of the above"],
-    Answer: "Answer D"
+    Answer: "D: All of the above"
   },
 
   {
     Question: "What should you always first try to use to declare variables?",
     Choice: ["A:let", "B: const", "c: var"],
-    Answer: "Answer B"
+    Answer: "B: const"
   },
 
   {
@@ -73,7 +75,7 @@ const quizQuestions = [
       "C: Different Object Modes",
       "D: Different Operation Methods",
     ],
-    Answer: "Answer A"
+    Answer: "A:Document Object Model"
   },
 ];
 
@@ -83,25 +85,25 @@ let currentQuestion = quizQuestions[questionNumber];
 
 function postedQuestion() {
   let questionTemplate = `<h2>${currentQuestion.Question}</h2>
-    <button data-answer="${currentQuestion.Answer[0]}">${currentQuestion.Answer[0]}</button>
-    <button data-answer=" ${currentQuestion.Answer[1]}">${currentQuestion.Answer[1]}</button>
-    <button data-answer=" ${currentQuestion.Answer[2]}">${currentQuestion.Answer[2]}</button>
-    <button data-answer=" ${currentQuestion.Answer[3]}">${currentQuestion.Answer[3]}</button>`;
+    <button data-answer="${currentQuestion.Answer[0]}">${currentQuestion.Choices[0]}</button>
+    <button data-answer=" ${currentQuestion.Answer[1]}">${currentQuestion.Choices[1]}</button>
+    <button data-answer=" ${currentQuestion.Answer[2]}">${currentQuestion.Choices[2]}</button>
+    <button data-answer=" ${currentQuestion.Answer[3]}">${currentQuestion.Choices[3]}</button>`;
 
   document.getElementById("question").innerHTML = questionTemplate;
 }
 
-// function correctAnswer() {
-//   if (currentQuestion.Answer === currentQuestion.correctAnswer){
-//     console.log("Correct!");
-//   }else {
-//     console.log("Wrong!");
-//   }
-// }
+function correctAnswer() {
+  if (currentQuestion.Choices == currentQuestion.Answer){
+    console.log("Correct!");
+  } else {
+    console.log("Wrong!");
+  }
+}
 
 function startGame() {
   postedQuestion();
-
+  
 }
 
 //Hide Start screen
@@ -126,6 +128,7 @@ function startGame() {
 //if answer is wrong, subtract from 'countdown'
 
 //Increase questionNumber by 1
+
 // IF lasted question answered, then `endGame();, else ask questions
 
 // displayCurrentQuestion();
