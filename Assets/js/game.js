@@ -1,6 +1,7 @@
 // Declare countdown
 let timerEl = document.querySelector("#timer");
 let questionContainer = document.querySelector("#question");
+
 let startBtn = document.querySelector("#start");
 let introEl = document.querySelector("#introduction");
 let gameHasEnded = document.querySelector("#gameOver");
@@ -36,7 +37,8 @@ questionContainer.addEventListener("click", function (event) {
   if (!clickEl.matches("button")) return;
   const userResponse = clickEl.dataset.answer;
   console.log(userResponse);
-  correctAnswer();
+  correctAnswer(event);
+  console.log(correctAnswer(event));
 });
 
 // Declare questions
@@ -97,18 +99,18 @@ function keepScore(){
 
 function correctAnswer(event) {
   if(event.target.matches('#Choice')){
-    if(event.target.innerHTML === quizQuestions[questionNumber].Answer){
-      console.log(Answer);
+    if(event.target.innerHTML === currentQuestion.Answer){
+      console.log(currentQuestion.Answer);
       
       outcome.innerHTML ="you got it!";
       points += 3;
     } else {
-      clockLeft = (clockLeft - 10);
+      quizClock = (quizClock - 10);
       
       outcome.innerHTML = "better luck next time!";
     }
 
-    if(currentQuestion < (Question.length - 1)){
+    if(currentQuestion < (currentQuestion.Question.length - 1)){
       currentQuestion++;
       postedQuestion();
     } else {
@@ -121,7 +123,7 @@ function correctAnswer(event) {
 function startGame() {
   postedQuestion();
   questionNumber = 0;
-  correctAnswer();
+  
 
 }
 
