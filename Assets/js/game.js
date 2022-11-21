@@ -29,18 +29,14 @@ startBtn.addEventListener("click", (event) => {
   gameHasEnded.setAttribute('class','hide');
   quizTimer();
   startGame();
-
 });
 
 questionContainer.addEventListener("click", function (event) {
   const clickEl = event.target;
-
   if (!clickEl.matches("button")) return;
-
   const userResponse = clickEl.dataset.answer;
-
   console.log(userResponse);
-
+  correctAnswer();
 });
 
 // Declare questions
@@ -48,7 +44,7 @@ const quizQuestions = [
   {
     Question: "What is the symbol to comment in javascript?",
     Choice: ["A: //", "B: /> ", "C: ()", "D: ||"],
-    Answer: ["A: //"]
+    Answer: "A: //"
   },
 
   {
@@ -84,12 +80,13 @@ const quizQuestions = [
 
 let currentQuestion = quizQuestions[questionNumber];
 
+
 function postedQuestion() {
   let questionTemplate = `<h2>${currentQuestion.Question}</h2>
-    <button data-answer="${currentQuestion.Choice[0]}">${currentQuestion.Choice[0]}</button>
-    <button data-answer=" ${currentQuestion.Choice[1]}">${currentQuestion.Choice[1]}</button>
-    <button data-answer=" ${currentQuestion.Choice[2]}">${currentQuestion.Choice[2]}</button>
-    <button data-answer=" ${currentQuestion.Choice[3]}">${currentQuestion.Choice[3]}</button>`;
+    <button id=Choice data-answer="${currentQuestion.Choice[0]}">${currentQuestion.Choice[0]}</button>
+    <button id=Choice data-answer=" ${currentQuestion.Choice[1]}">${currentQuestion.Choice[1]}</button>
+    <button id=Choice data-answer=" ${currentQuestion.Choice[2]}">${currentQuestion.Choice[2]}</button>
+    <button id=Choice data-answer=" ${currentQuestion.Choice[3]}">${currentQuestion.Choice[3]}</button>`;
 
   document.getElementById("question").innerHTML = questionTemplate;
 }
@@ -99,25 +96,33 @@ function keepScore(){
 }
 
 function correctAnswer(event) {
-  if(event.target.matches('#Answer')){
-    if(event.target.textContent === currentQuestion.Answer){
-      outcome.textContent =(currentQuestion + 1) + "you got it!";
+  if(event.target.matches('#Choice')){
+    if(event.target.innerHTML === quizQuestions[questionNumber].Answer){
+      console.log(Answer);
+      
+      outcome.innerHTML ="you got it!";
       points += 3;
     } else {
-      clockLeft = (clockLeft - 20);
-      outcome.textContent =(currentQuestion + 1) + "better luck next time!";
+      clockLeft = (clockLeft - 10);
+      
+      outcome.innerHTML = "better luck next time!";
     }
 
-    if(currentQuestion < (questionNumber - 1)){
+    if(currentQuestion < (Question.length - 1)){
       currentQuestion++;
       postedQuestion();
+    } else {
+      endGame();
     }
   }
-}
+};
+
 
 function startGame() {
   postedQuestion();
-  
+  questionNumber = 0;
+  correctAnswer();
+
 }
 
 function endGame(){
@@ -125,9 +130,7 @@ function endGame(){
 
 }
 
-//Hide Start screen
 
-//start timer at 0
 
 //Display the current question
 // displayCurrentQuestion();
