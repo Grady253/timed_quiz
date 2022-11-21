@@ -3,7 +3,7 @@
     font-size: 19px;
 }
 
-header , #introduction, #question, #outcome, .timer{
+header , #introduction, #question, #outcome, .gameover, .timer{
     text-align: center;
 }
 

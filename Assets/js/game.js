@@ -4,6 +4,7 @@ let questionContainer = document.querySelector("#question");
 let startBtn = document.querySelector("#start");
 let introEl = document.querySelector("#introduction");
 let gameHasEnded = document.querySelector("#gameOver");
+let pointsEl = document.querySelector("#finalScore");
 let outcome = document.querySelector("#outcome");
 let questionNumber = 0;
 let quizClock = 60;
@@ -121,7 +122,9 @@ function startGame() {
 }
 
 function endGame(){
-  questionContainer.getElementsByClassName.display = 'none';
-  
+  questionContainer.style.display = 'none';
+  gameHasEnded.style.display = 'block';
+  clearInterval(quizClock);
+  pointsEl.innerHTML = points;
 
 }
