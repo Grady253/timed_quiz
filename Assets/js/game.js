@@ -24,7 +24,7 @@ function quizTimer() {
 
 startBtn.addEventListener("click", (event) => {
   clickEl = event.target;
-
+  introEl.setAttribute('class','hide');
   quizTimer();
   startGame();
 
@@ -45,7 +45,7 @@ questionContainer.addEventListener("click", function (event) {
 const quizQuestions = [
   {
     Question: "What is the symbol to comment in javascript?",
-    Choices: ["A: //", "B: /> ", "C: ()", "D: ||"],
+    Choice: ["A: //", "B: /> ", "C: ()", "D: ||"],
     Answer: ["A: //"]
   },
 
@@ -85,16 +85,17 @@ let currentQuestion = quizQuestions[questionNumber];
 
 function postedQuestion() {
   let questionTemplate = `<h2>${currentQuestion.Question}</h2>
-    <button data-answer="${currentQuestion.Answer[0]}">${currentQuestion.Choices[0]}</button>
-    <button data-answer=" ${currentQuestion.Answer[1]}">${currentQuestion.Choices[1]}</button>
-    <button data-answer=" ${currentQuestion.Answer[2]}">${currentQuestion.Choices[2]}</button>
-    <button data-answer=" ${currentQuestion.Answer[3]}">${currentQuestion.Choices[3]}</button>`;
+    <button data-answer="${currentQuestion.Choice[0]}">${currentQuestion.Choice[0]}</button>
+    <button data-answer=" ${currentQuestion.Choice[1]}">${currentQuestion.Choice[1]}</button>
+    <button data-answer=" ${currentQuestion.Choice[2]}">${currentQuestion.Choice[2]}</button>
+    <button data-answer=" ${currentQuestion.Choice[3]}">${currentQuestion.Choice[3]}</button>`;
 
   document.getElementById("question").innerHTML = questionTemplate;
 }
 
 function correctAnswer() {
-  if (currentQuestion.Choices == currentQuestion.Answer){
+  if (currentQuestion.Choice == currentQuestion.Answer){
+    questionNumber++;
     console.log("Correct!");
   } else {
     console.log("Wrong!");

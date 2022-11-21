@@ -11,3 +11,7 @@ header , #introduction, .timer{
     text-align: center;
 }
 
+
+.hide{
+    display: none;
+}
