@@ -1,13 +1,13 @@
 // Declare countdown
 let timerEl = document.querySelector("#timer");
-
 let questionContainer = document.querySelector("#question");
-
 let startBtn = document.querySelector("#start");
-
 let introEl = document.querySelector("#introduction");
-
+let gameHasEnded = document.querySelector("#gameOver");
+let outcome = document.querySelector("#outcome");
+let questionNumber = 0;
 let quizClock = 60;
+let points = 0;
 
 function quizTimer() {
   const seconds = setInterval(function () {
@@ -18,6 +18,7 @@ function quizTimer() {
     if (quizClock === 0 || quizClock < 1) {
       clearInterval(seconds);
       alert("Out of time.");
+      endGame();
     }
   }, 1000);
 }
@@ -25,6 +26,7 @@ function quizTimer() {
 startBtn.addEventListener("click", (event) => {
   clickEl = event.target;
   introEl.setAttribute('class','hide');
+  gameHasEnded.setAttribute('class','hide');
   quizTimer();
   startGame();
 
@@ -79,7 +81,6 @@ const quizQuestions = [
   },
 ];
 
-let questionNumber = 0;
 
 let currentQuestion = quizQuestions[questionNumber];
 
@@ -93,18 +94,35 @@ function postedQuestion() {
   document.getElementById("question").innerHTML = questionTemplate;
 }
 
-function correctAnswer() {
-  if (currentQuestion.Choice == currentQuestion.Answer){
-    questionNumber++;
-    console.log("Correct!");
-  } else {
-    console.log("Wrong!");
+function keepScore(){
+
+}
+
+function correctAnswer(event) {
+  if(event.target.matches('#Answer')){
+    if(event.target.textContent === currentQuestion.Answer){
+      outcome.textContent =(currentQuestion + 1) + "you got it!";
+      points += 3;
+    } else {
+      clockLeft = (clockLeft - 20);
+      outcome.textContent =(currentQuestion + 1) + "better luck next time!";
+    }
+
+    if(currentQuestion < (questionNumber - 1)){
+      currentQuestion++;
+      postedQuestion();
+    }
   }
 }
 
 function startGame() {
   postedQuestion();
   
+}
+
+function endGame(){
+  questionContainer.getElementsByClassName.display = 'none';
+
 }
 
 //Hide Start screen
