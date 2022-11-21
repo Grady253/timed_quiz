@@ -3,14 +3,9 @@
     font-size: 19px;
 }
 
-header , #introduction, .timer{
+header , #introduction, #question, #outcome, .timer{
     text-align: center;
 }
-
-.quesiton{
-    text-align: center;
-}
-
 
 .hide{
     display: none;

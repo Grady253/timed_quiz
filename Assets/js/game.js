@@ -17,7 +17,7 @@ function quizTimer() {
     // stops the timer and notifies user time has ran out.
     if (quizClock === 0 || quizClock < 1) {
       clearInterval(seconds);
-      alert("Out of time.");
+      // alert("Out of time.");
       endGame();
     }
   }, 1000);
@@ -48,8 +48,8 @@ const quizQuestions = [
 
   {
     Question: "What is the script tag for Javascript when writing on HTML?",
-    Choice: ["A: <javascript>", "B: <script>", "C: <js>", "D: <java>"],
-    Answer: "B: <script>"
+    Choice: ["A: javascript", "B: script", "C: js", "D: java"],
+    Answer: "B: script"
   },
 
   {
@@ -81,11 +81,11 @@ let currentQuestion = quizQuestions[questionNumber];
 
 
 function postedQuestion() {
-  let questionTemplate = `<h2>${currentQuestion.Question}</h2>
-    <button id=Choice data-answer="${currentQuestion.Choice[0]}">${currentQuestion.Choice[0]}</button>
-    <button id=Choice data-answer=" ${currentQuestion.Choice[1]}">${currentQuestion.Choice[1]}</button>
-    <button id=Choice data-answer=" ${currentQuestion.Choice[2]}">${currentQuestion.Choice[2]}</button>
-    <button id=Choice data-answer=" ${currentQuestion.Choice[3]}">${currentQuestion.Choice[3]}</button>`;
+  let questionTemplate = `<h2>${quizQuestions[questionNumber].Question}</h2>
+    <button id=Choice data-answer="${quizQuestions[questionNumber].Choice[0]}">${quizQuestions[questionNumber].Choice[0]}</button>
+    <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[1]}">${quizQuestions[questionNumber].Choice[1]}</button>
+    <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[2]}">${quizQuestions[questionNumber].Choice[2]}</button>
+    <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[3]}">${quizQuestions[questionNumber].Choice[3]}</button>`;
 
   document.getElementById("question").innerHTML = questionTemplate;
 }
@@ -97,18 +97,16 @@ function keepScore(){
 function correctAnswer(event) {
   if(event.target.matches('#Choice')){
     if(event.target.innerHTML === currentQuestion.Answer){
-      console.log(currentQuestion.Answer);
-      
       outcome.innerHTML ="you got it!";
       points += 3;
     } else {
       quizClock = (quizClock - 10);
-      
+      // currentQuestion++;
       outcome.innerHTML = "better luck next time!";
     }
 
-    if(currentQuestion < (currentQuestion.Question.length - 1)){
-      currentQuestion++;
+    if(questionNumber < (quizQuestions.length -1)){
+      questionNumber++;
       postedQuestion();
     } else {
       endGame();
@@ -124,40 +122,6 @@ function startGame() {
 
 function endGame(){
   questionContainer.getElementsByClassName.display = 'none';
+  
 
 }
-
-
-
-//Display the current question
-// displayCurrentQuestion();
-
-//Display first questions
-
-//set the starting value of 'countdown'
-
-//Start timer function
-
-//IF countdown === 0, then `endGame()`
-
-//function answerQuestion()
-
-//validate the selected answer
-
-//if answer is wrong, subtract from 'countdown'
-
-//Increase questionNumber by 1
-
-// IF lasted question answered, then `endGame();, else ask questions
-
-// displayCurrentQuestion();
-
-//Display question
-
-// function displayCurrentQuestion(){
-
-// };
-
-//function `endGame`
-
-//
