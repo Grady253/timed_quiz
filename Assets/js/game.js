@@ -1,7 +1,6 @@
 // Declare countdown
 let timerEl = document.querySelector("#timer");
 let questionContainer = document.querySelector("#question");
-
 let startBtn = document.querySelector("#start");
 let introEl = document.querySelector("#introduction");
 let gameHasEnded = document.querySelector("#gameOver");
@@ -36,9 +35,7 @@ questionContainer.addEventListener("click", function (event) {
   const clickEl = event.target;
   if (!clickEl.matches("button")) return;
   const userResponse = clickEl.dataset.answer;
-  console.log(userResponse);
   correctAnswer(event);
-  console.log(correctAnswer(event));
 });
 
 // Declare questions
@@ -122,9 +119,7 @@ function correctAnswer(event) {
 
 function startGame() {
   postedQuestion();
-  questionNumber = 0;
   
-
 }
 
 function endGame(){
