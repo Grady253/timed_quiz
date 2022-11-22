@@ -7,8 +7,7 @@
  [Usage](#usage) |
  [Credits](#credits) |
  ## Usage
- 
-
+ ![JavaScript Game](Assets/image/Quiz.png)
  ## Credits
  [my Github:](https://www.github.com/Grady253).
  [My email:](mailto:Grady.andre2@gmail.com).
