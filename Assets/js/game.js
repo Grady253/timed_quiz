@@ -61,7 +61,7 @@ const quizQuestions = [
 
   {
     Question: "What should you always first try to use to declare variables?",
-    Choice: ["A:let", "B: const", "c: var"],
+    Choice: ["A:let", "B: const", "C: var","D: Declare"],
     Answer: "B: const"
   },
 
@@ -97,14 +97,14 @@ function keepScore(){
 
 function correctAnswer(event) {
   if(event.target.matches('#Choice')){
-    if(event.target.innerHTML === currentQuestion.Answer){
+    if(event.target.innerHTML === quizQuestions[questionNumber].Answer){ 
       outcome.innerHTML ="you got it!";
       points += 3;
     } else {
       quizClock = (quizClock - 10);
       // currentQuestion++;
       outcome.innerHTML = "better luck next time!";
-    }
+    };
 
     if(questionNumber < (quizQuestions.length -1)){
       questionNumber++;
