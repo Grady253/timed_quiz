@@ -24,6 +24,7 @@ function quizTimer() {
   }, 1000);
 }
 
+
 startBtn.addEventListener("click", (event) => {
   clickEl = event.target;
   introEl.setAttribute('class','hide');
@@ -46,25 +47,25 @@ const quizQuestions = [
     Choice: ["A: //", "B: /> ", "C: ()", "D: ||"],
     Answer: "A: //"
   },
-
+  
   {
     Question: "What is the script tag for Javascript when writing on HTML?",
     Choice: ["A: javascript", "B: script", "C: js", "D: java"],
     Answer: "B: script"
   },
-
+  
   {
     Question: "What are Javascript data types?",
     Choice: ["A: String", "B: Object", "C: Numbers", "D: All of the above"],
     Answer: "D: All of the above"
   },
-
+  
   {
     Question: "What should you always first try to use to declare variables?",
     Choice: ["A:let", "B: const", "C: var","D: Declare"],
     Answer: "B: const"
   },
-
+  
   {
     Question: "What does DOM stand for?",
     Choice: [
@@ -78,21 +79,17 @@ const quizQuestions = [
 ];
 
 
-let currentQuestion = quizQuestions[questionNumber];
+// let currentQuestion = quizQuestions[questionNumber];
 
 
 function postedQuestion() {
   let questionTemplate = `<h2>${quizQuestions[questionNumber].Question}</h2>
-    <button id=Choice data-answer="${quizQuestions[questionNumber].Choice[0]}">${quizQuestions[questionNumber].Choice[0]}</button>
-    <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[1]}">${quizQuestions[questionNumber].Choice[1]}</button>
-    <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[2]}">${quizQuestions[questionNumber].Choice[2]}</button>
-    <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[3]}">${quizQuestions[questionNumber].Choice[3]}</button>`;
-
+  <button id=Choice data-answer="${quizQuestions[questionNumber].Choice[0]}">${quizQuestions[questionNumber].Choice[0]}</button>
+  <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[1]}">${quizQuestions[questionNumber].Choice[1]}</button>
+  <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[2]}">${quizQuestions[questionNumber].Choice[2]}</button>
+  <button id=Choice data-answer=" ${quizQuestions[questionNumber].Choice[3]}">${quizQuestions[questionNumber].Choice[3]}</button>`;
+  
   document.getElementById("question").innerHTML = questionTemplate;
-}
-
-function keepScore(){
-
 }
 
 function correctAnswer(event) {
@@ -105,7 +102,7 @@ function correctAnswer(event) {
       // currentQuestion++;
       outcome.innerHTML = "better luck next time!";
     };
-
+    
     if(questionNumber < (quizQuestions.length -1)){
       questionNumber++;
       postedQuestion();
@@ -118,13 +115,11 @@ function correctAnswer(event) {
 
 function startGame() {
   postedQuestion();
-  
 }
 
 function endGame(){
   questionContainer.style.display = 'none';
   gameHasEnded.style.display = 'block';
-  clearInterval(quizClock);
   pointsEl.innerHTML = points;
-
+  
 }
