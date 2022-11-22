@@ -16,4 +16,4 @@
  You'll need to deploy it from the live URL
 
  ## Deployed Url
- 
+ https://grady253.github.io/timed_quiz/
